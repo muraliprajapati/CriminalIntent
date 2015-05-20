@@ -1,0 +1,17 @@
+Applications Graphics Acceleration Info:
+Uptime: 14671307 Realtime: 63799320
+
+** Graphics info for pid 14908 [com.mdevs.criminalintent] **
+Profile data in ms:
+
+	com.mdevs.criminalintent/com.mdevs.criminalintent.CrimeListActivity/android.view.ViewRootImpl@42194e38
+View hierarchy:
+
+  com.mdevs.criminalintent/com.mdevs.criminalintent.CrimeListActivity/android.view.ViewRootImpl@42194e38
+  18 views, 0.00 kB of display lists, 0 frames rendered
+
+
+Total ViewRootImpl: 1
+Total Views:        18
+Total DisplayList:  0.00 kB
+

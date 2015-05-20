@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CriminalIntent</string>
+    <string name="titleActivityCrime">CrimeActivity</string>
+    <string name="crimeTitleHint">Enter crime\'s title</string>
+    <string name="crimeTitleLabel">Title</string>
+    <string name="crimeDetailLabel">Details</string>
+    <string name="crimeSolved">Solved?</string>
+    <string name="crimeList">Crime List</string>
+    <string name="datePickerTitle">Date of Crime</string>
+    <string name="new_crime">New Crime</string>
+    <string name="show_subtitle">Show Subtitle</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="subtitle">If you see something, say something.</string>
+    <string name="delete_crime">Delete</string>
+</resources>
