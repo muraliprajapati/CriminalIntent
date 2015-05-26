@@ -2,6 +2,7 @@ package com.mdevs.criminalintent;
 
 import android.app.ListFragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 public class CrimeListFragment extends ListFragment {
     private static final String TAG = "CrimeListFragment";
     ArrayList<Crime> mCrimeList;
+    Color color;
+    CriminalIntentHelper helper;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class CrimeListFragment extends ListFragment {
 
         CrimeAdapter adapter = new CrimeAdapter(mCrimeList);
         setListAdapter(adapter);
+        helper = new CriminalIntentHelper(getActivity());
     }
 
     @Override
@@ -44,31 +48,6 @@ public class CrimeListFragment extends ListFragment {
     public void onResume() {
         super.onResume();
         ((CrimeAdapter) getListAdapter()).notifyDataSetChanged();
-    }
-
-    private class CrimeAdapter extends ArrayAdapter<Crime> {
-
-        CrimeAdapter(ArrayList<Crime> crimeList) {
-            super(getActivity(), 0, crimeList);
-
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = getActivity().getLayoutInflater().inflate(R.layout.list_item_crime, null);
-            }
-            Crime c = getItem(position);
-            TextView titleTextView = (TextView) convertView.findViewById(R.id.crimeListItemTitleTextView);
-            titleTextView.setText(c.getmTitle());
-
-            TextView dateTextview = (TextView) convertView.findViewById(R.id.crimeListItemDateTextView);
-            dateTextview.setText(c.getmDate().toString());
-            CheckBox solvedCheckBox = (CheckBox) convertView.findViewById(R.id.crimeListItemSolvedCheckBox);
-            solvedCheckBox.setChecked(c.ismSolved());
-
-            return convertView;
-        }
     }
 
     @Override
@@ -92,6 +71,36 @@ public class CrimeListFragment extends ListFragment {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private class CrimeAdapter extends ArrayAdapter<Crime> {
+
+        CrimeAdapter(ArrayList<Crime> crimeList) {
+            super(getActivity(), 0, crimeList);
+
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = getActivity().getLayoutInflater().inflate(R.layout.list_item_crime, null);
+            }
+
+            if(position%2==0){
+                convertView.setBackgroundColor(color.parseColor("#33B5E5"));
+            }
+
+            Crime c = getItem(position);
+            TextView titleTextView = (TextView) convertView.findViewById(R.id.crimeListItemTitleTextView);
+            titleTextView.setText(c.getmTitle());
+
+            TextView dateTextview = (TextView) convertView.findViewById(R.id.crimeListItemDateTextView);
+            dateTextview.setText(c.getmDate().toString());
+            CheckBox solvedCheckBox = (CheckBox) convertView.findViewById(R.id.crimeListItemSolvedCheckBox);
+            solvedCheckBox.setChecked(c.ismSolved());
+
+            return convertView;
         }
     }
 }

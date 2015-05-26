@@ -1,10 +1,7 @@
 package com.mdevs.criminalintent;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -51,7 +48,7 @@ public class CrimePagerActivity extends ActionBarActivity {
             @Override
             public void onPageSelected(int position) {
                 Crime crime = mCrimeList.get(position);
-                if(crime.getmTitle() != null){
+                if (crime.getmTitle() != null) {
                     setTitle(crime.getmTitle());
                 }
 
@@ -63,14 +60,14 @@ public class CrimePagerActivity extends ActionBarActivity {
             }
         });
 
-        UUID crimeID = (UUID)getIntent().getSerializableExtra(CrimeFragment.EXTRA_CRIME_ID);
-        for(int i=0;i<=mCrimeList.size();i++){
-            if(mCrimeList.get(i).getmId().equals(crimeID)){
+        UUID crimeID = (UUID) getIntent().getSerializableExtra(CrimeFragment.EXTRA_CRIME_ID);
+        for (int i = 0; i <= mCrimeList.size(); i++) {
+            if (mCrimeList.get(i).getmId().equals(crimeID)) {
                 mViewPager.setCurrentItem(i);
                 break;
 
             }
         }
-        }
     }
+}
 
